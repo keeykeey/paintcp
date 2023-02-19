@@ -12,17 +12,14 @@
       :color = "fontColor"
       :fontSize  = "fontSize"
     />
-    <div>
-      <label>出力形式 </label>
-      <input type="radio" value="0" v-model="radioVal"/>
-      <label>png </label>
-      <input type="radio" value="1" v-model="radioVal"/>
-      <label>jpeg </label>
-      <input type="radio" value="2" v-model="radioVal"/>
-      <label>svg </label>
-    </div>
+    <Radio tag=出力形式
+      :radioTitle = "radioTitle"
+      :defaultVal = "defaultRadioVal"
+      :vals = "radioVals"
+      :labels = "radioLabels"
+    ></Radio>
     <p>
-      出力形式 : {{ radioVal }}
+      出力形式 : {{ currentRadioVal }}
     </p>
   </div>
 </template>
@@ -30,24 +27,34 @@
 <script>
 import PaintPallet from './components/PaintPallet'
 import Selector from "./components/Selector"
+import Radio from "./components/Radio"
 const DEFAULT_FONT_SIZE = "3"
 
 export default {
   name: 'App',
   components: { 
     PaintPallet,
-    Selector
+    Selector,
+    Radio,
   },
   data: function(){
     return{
       fontColor: "#40a174",
       fontSize: DEFAULT_FONT_SIZE,
       fontSizeList: [1,2,3,4,5,6,7,8,9,10],
-      radioVal: "0",
+      
+      // radio
+      currentRadioVal: "0",
+
+      tag: "画像出力形式",
+      radioTitle: "出力形式",
+      defaultRadioVal: "0",
+      radioVals: ["0", "1", "2"],
+      radioLabels: ["png", "jpg", "svg"],
     }
   },
   watch: {
-    radioVal: function(val) {
+    currentRadioVal: function(val) {
       // TODO //
       console.log("watch val",val);
     }
