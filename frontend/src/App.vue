@@ -18,9 +18,6 @@
       :vals = "radioVals"
       :labels = "radioLabels"
     ></Radio>
-    <p>
-      出力形式 : {{ currentRadioVal }}
-    </p>
   </div>
 </template>
 
